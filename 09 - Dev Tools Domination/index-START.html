@@ -18,29 +18,53 @@
     }
 
     // Regular
+    console.log('hello');
 
     // Interpolated
-
+    console.log("Hello I am a %s string!", 'cat'); //works with es6 backticks
     // Styled
-
+    // console.log("%c I am some great text", "font-size:50px")  //can make all kinds of changes
     // warning!
-
+    console.warn('OHH NO!');
     // Error :|
-
+    console.error('OHH SHIT!');
     // Info
-
+    console.info('info be here');
     // Testing
-
+    console.assert(1 === 1, 'dont show me!')
+    console.assert(1 === 2, 'woah!')
     // clearing
-
+    console.clear();
     // Viewing DOM Elements
-
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
     // Grouping together
-
+    console.clear();
+    //can also use groupCollapsed()
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    })
     // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Malachi');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
 
+      console.table(dogs);
   </script>
 </body>
 </html>
