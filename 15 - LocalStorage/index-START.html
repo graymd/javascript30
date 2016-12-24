@@ -25,6 +25,8 @@
       <input type="submit" value="+ Add Item">
 
     </form>
+    <button id='check-all-button'>Check All</button>
+    <button id='uncheck-all-button'>Uncheck All</button>
     <button id='remove-items'>Clear</button>
   </div>
 
@@ -33,6 +35,8 @@
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || [];
   const removeItemsButton = document.querySelector('#remove-items');
+  const checkAllButton = document.querySelector('#check-all-button');
+  const uncheckAllButton = document.querySelector('#uncheck-all-button');
 
   function addItem(e) {
     e.preventDefault();
@@ -73,10 +77,18 @@
     populateList(items, itemsList);
   }
 
+  function checkOrUncheckAll() {
+    const checkOrUncheck = this.id == 'check-all-button' ? true : false;
+    items.forEach(item => item.done = checkOrUncheck);
+    populateList(items, itemsList);
+  }
+
   addItems.addEventListener('submit', addItem);
   itemsList.addEventListener('click', toggleDone);
   populateList(items, itemsList);
   removeItemsButton.addEventListener('click', removeItems);
+  checkAllButton.addEventListener('click', checkOrUncheckAll);
+  uncheckAllButton.addEventListener('click', checkOrUncheckAll);
 </script>
 
 
