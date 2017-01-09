@@ -39,7 +39,20 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div');
 
+  function logText(e) {
+    // e.stopPropagation();  //stop bubbling - moving back up from clicked element
+    console.log(this.classList.value);
+  }
+
+  //capture starts from first element
+
+  //when element is clicked - browser captures element and then bubbles up from that element
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false,
+    once: true  //removes binding after clicking - use for form submission
+  }));
 </script>
 </body>
 </html>
